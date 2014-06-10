@@ -1,0 +1,52 @@
+float ballX;
+float ballY;
+float speedX;
+float speedY;
+int score1;
+int score2;
+
+
+void setup() {
+  size(400,300);
+  ballX = width/2;
+  ballY = height/2;
+  speedX = 2;
+  speedY = 2;
+
+}
+
+void draw() {
+  background(0);
+  stroke(255);
+  line(width/2,0,width/2,height);
+  
+  noStroke();
+  fill(255);
+  ellipse(ballX, ballY, 10, 10);
+  
+  noStroke();
+  fill(255);
+  rectMode(CENTER);
+  rect(15, mouseY, 4, 30);
+  rect(mouseX, 15, 30, 4);
+  
+  if ((ballX < 5) || (ballY < 5)){
+    score2 += 1;
+    println(score2);
+    setup();
+  }
+  
+  if ((ballX >(width - 5)) || ( ballX >= 16.5 && ballX <= 17.5 )|| ballY >= (mouseY - 30) && ballY <= (mouseY + 30) && ballX >= 11 && ballX <= 19){
+    speedX *= -1;
+  }
+  
+  if ((ballY > (height - 5)) || (ballY >= 16.5 && ballY <= 17.5 )|| ballX >= (mouseX - 30) && ballX <= (mouseX + 30) && ballY >= 11 && ballY <= 19) {
+      speedY *= -1;
+  } 
+
+  
+  ballX += speedX;
+  ballY += speedY;
+  
+
+}
